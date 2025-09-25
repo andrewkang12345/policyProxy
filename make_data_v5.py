@@ -94,16 +94,13 @@ def generate_policy_shift_split(config: Dict, split_name: str, num_episodes: int
     
     print(f"📊 Generating {split_name} with policy shift ({num_episodes} episodes)")
     
-    # Create config with modified policy mixture  
-    import copy
-    temp_config = copy.deepcopy(config)
+    # Create config with modified policy mixture
+    temp_config = config.copy()
+    temp_config["generator"] = temp_config["generator"].copy()
     
-    # Apply policy shift configuration by modifying generator config attributes
+    # Apply policy shift configuration
     if "mixture" in policy_config:
-        # Modify the mixture init_weights to create policy distribution shift
-        if "init_weights" in policy_config["mixture"]:
-            temp_config.generator.mixture.init_weights = policy_config["mixture"]["init_weights"]
-            print(f"  📊 Policy mixture weights: {policy_config['mixture']['init_weights']}")
+        temp_config["generator"]["mixture"] = policy_config["mixture"]
     
     # Generate the split
     generate_split(save_path, temp_config, split_name, num_episodes, seed_offset=hash(split_name) % 10000)
@@ -220,18 +217,11 @@ def main():
         # Load baseline data for optimization
         baseline_data = load_baseline_data(baseline_path)
         
-        # Create optimization targets (only for state and state+action shifts)
+        # Create optimization targets
         optimization_targets = []
         for target_config in config_dict["gradient_optimization"]["targets"]:
-            shift_kind = target_config["shift_kind"]
-            
-            # Skip policy shifts - they should use direct configuration
-            if shift_kind == "policy":
-                print(f"⚠️  Skipping gradient optimization for policy shift - will use direct configuration")
-                continue
-                
             target = OptimizationTarget(
-                shift_kind=shift_kind,
+                shift_kind=target_config["shift_kind"],
                 target_divergence=target_config["target_divergence"],
                 tolerance=target_config.get("tolerance", 0.02),
                 max_iters=target_config.get("max_iters", 80),

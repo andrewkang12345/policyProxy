@@ -214,17 +214,14 @@ def evaluate_changepoint_detection(model, test_data, device, tau=3):
     
     test_before, test_after, test_labels = test_data
     
-    # Handle None values
-    if test_before is not None:
-        test_before = test_before.to(device)
-    if test_after is not None:
-        test_after = test_after.to(device)
-    if test_labels is not None:
-        test_labels = test_labels.to(device)
-    
-    # Check if any required data is missing
+    # Check individual tensors for None
     if test_before is None or test_after is None or test_labels is None:
+        print("❌ Individual test tensors contain None values")
         return {"f1_tau": 0.0, "mabe": float('inf'), "delay_mean": float('inf')}
+    
+    test_before = test_before.to(device)
+    test_after = test_after.to(device)
+    test_labels = test_labels.to(device)
     
     model.eval()
     with torch.no_grad():
@@ -368,6 +365,10 @@ def main():
         print(f"Training changepoint detector for {args.epochs} epochs...")
         best_f1 = train_detector(model, train_data, val_data, device, 
                                 epochs=args.epochs, lr=1e-3)
+        
+        if best_f1 == 0.0:
+            print("❌ Training failed due to data issues. Skipping model save and evaluation.")
+            return
         
         # Save trained model
         torch.save({

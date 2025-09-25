@@ -78,7 +78,7 @@ The `task_b_policy_representation` folders were empty due to:
    - Graceful error handling for missing data
    - Safe data extraction functions
 
-3. **Created runner script** (`scripts/fixes/run_task_b_fixed.py`):
+3. **Created runner script** (`scripts/run_task_b_fixed.py`):
    - Proper error handling and logging
    - Separate output directories for fixed versions
    - Automated execution of both B1 and B2 tasks
@@ -183,10 +183,10 @@ ls reports/detailed_performance_analysis/robustness_ranking/
 ### **Regenerate Analysis**:
 ```bash
 # Regenerate all plots
-python scripts/analysis/create_detailed_performance_plots.py
+python scripts/create_detailed_performance_plots.py
 
 # Run fixed Task B components
-python scripts/fixes/run_task_b_fixed.py
+python scripts/run_task_b_fixed.py
 ```
 
 ### **Interpret Results**:

@@ -13,30 +13,32 @@ cd policyProxy
 pip install -e .[plot]
 ```
 
-## 2. Data Generation (v5.0)
+## 2. Data Generation (v2.0)
 
-Current configs use `configs/base_v5.yaml` for the three distribution shifts implementation:
+New configs live under `configs/base_v2.yaml` and `configs/ood/*.yaml`.
+`base_v2.yaml` defines the IID split plus an `oid_templates` block that expands
+to sixteen Wasserstein-targeted OOD datasets:
 
-**Three Distribution Shifts (Gradient-Optimized)**:
 ```
-state_only_*     - State distribution shifts with gradient-optimized opponents
-state_action_*   - State+action shifts with non-random correlation
-policy_*         - Policy distribution shifts with gradient-based optimization
-```
-
-Generate everything (IID + all three shift types):
-```
-python make_data_v5.py --config configs/base_v5.yaml --out data/v5.0
+ood_state_w050,  ood_state_w100,  ood_state_w150,  ood_state_w200
+ood_action_w050, ood_action_w100, ood_action_w150, ood_action_w200
+ood_state_action_w050 ... w200
+ood_policy_w050 ... w200
 ```
 
-**Key Features**:
-- **Gradient-based opponent optimization** for all shift types
-- **Wasserstein targeting** for state/action shifts  
-- **Jensen-Shannon targeting** for policy shifts
-- **Non-random correlations** between state and actions
-- **Policy-aware** opponent responses
+Generate everything (IID + OOD) in one shot:
+```
+python make_data.py --config configs/base_v2.yaml --out data/v2.0
+```
 
-Outputs include optimized opponent models, divergence metrics, and evaluation-ready datasets.
+`make_data.py` enhancements:
+- YAML inheritance (`inherit:`) for lightweight overlays.
+- `oid_templates` auto-expands to the full grid (with `oid_prefix: ood`).
+- Pure Wasserstein tuning (`state`, `action`, `state_action`, `policy`).
+- `--sweep` (optional) emits per-oid YAMLs for inspection without generating data.
+
+Outputs include `config_used.yaml`, per-split indices, pilot tuning logs, and a
+ready-to-use directory tree for evaluation.
 
 ## 3. Baselines
 
@@ -62,38 +64,18 @@ Key scripts (all under `eval/`):
 `make_data.py` and `rollout.py` now consume `policy_id` labels exposed by
 `tasks/common/dataset.py`, enabling policy-aware metrics everywhere.
 
-## 5. Complete Workflow
+## 5. Multi-GPU Workflow
 
-### **End-to-End Analysis** (Recommended)
-`scripts/workflow/launch_complete_analysis.sh` runs the COMPLETE pipeline from start to finish:
-1. Generate datasets with three distribution shifts
-2. Train all 5 baseline models (CVAE variants + GRU + Transformer)
-3. Evaluate models on all splits with comprehensive metrics
-4. Run Task B policy representation analysis
-5. Generate 36 detailed performance plots with clear units
-6. Create specialized three-shifts analysis
-7. Produce complete summary report
+`scripts/launch.sh` encapsulates the full pipeline:
+1. Regenerate datasets from `configs/base_v2.yaml`.
+2. Train four baselines on GPUs 0–3.
+3. Evaluate rollouts, representation diagnostics, changepoints, and Wasserstein
+   divergences for every split.
+4. Write summaries to `runs/<model>/<TAG>/` and `reports/summary_<TAG>.md`.
 
+Edit `RUN_TAG`, `DATA_ROOT`, or `CONFIG` as needed, then run:
 ```
-bash scripts/workflow/launch_complete_analysis.sh
-```
-
-### **Individual Components**
-For running specific parts:
-
-**Core workflow** (data + basic training):
-```
-bash scripts/workflow/launch_v5_workflow.sh
-```
-
-**Detailed performance analysis** (36 separate images):
-```
-python scripts/analysis/create_detailed_performance_plots.py
-```
-
-**Three-shifts specialized analysis**:
-```
-python scripts/analysis/create_three_shifts_performance_analysis.py
+bash scripts/launch.sh
 ```
 
 ## 6. Metrics at a Glance
@@ -106,29 +88,12 @@ Each run directory contains JSON sidecars with:
 
 ## 7. Repository Map
 ```
-configs/                V5.0 configurations (three distribution shifts)
+configs/                Base + OOD YAMLs (inheritance-ready)
 baselines/state_cond/   Training scripts (GRU, CVAE PID/REP, Transformer)
 eval/                   Rollouts, diagnostics, changepoints, Wasserstein reports
-scripts/                Organized workflow and analysis scripts
-  ├── analysis/         Performance analysis and plotting
-  │   ├── create_detailed_performance_plots.py  (36 separate plots)
-  │   └── create_three_shifts_performance_analysis.py  (specialized)
-  ├── workflow/         Main workflow launchers
-  │   ├── launch_complete_analysis.sh  (END-TO-END: full pipeline)
-  │   ├── launch_v5_workflow.sh  (core workflow)
-  │   └── launch_v5_proper_tasks.sh  (task framework)
-  ├── task_framework/   Task A/B specific components
-  │   └── create_proper_task_plots.py
-  ├── fixes/            Bug fixes and working implementations
-  │   ├── fix_task_b_issues.py
-  │   └── run_task_b_fixed.py
-  └── archived/         Historical scripts for reference
-generator/              Gradient-based opponent optimization
+scripts/                Launch helpers
 tools/                  Distribution sampling + Wasserstein utilities
-data/                   Current v5.0 datasets (three shifts)
-docs/                   Documentation and archived materials
-runs/                   Current v4.0 baseline models only
-reports/                Current analysis results only
+data/                  Generated datasets (v2.0+)
 ```
 
 ## 8. License & Citation

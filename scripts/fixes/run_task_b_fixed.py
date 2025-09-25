@@ -17,9 +17,11 @@ def run_task_b1(data_dir: str, model_dir: str, output_dir: str):
     
     cmd = [
         sys.executable, "eval/policy_classification.py",
-        "--data_root", data_dir,
-        "--save_dir", output_dir,
+        "--data_dir", data_dir,
+        "--model_dir", model_dir,
+        "--output_dir", output_dir,
         "--epochs", "5",  # Reduced for demo
+        "--window_size", "6"
     ]
     
     try:
@@ -45,10 +47,11 @@ def run_task_b2(data_dir: str, model_dir: str, output_dir: str):
     
     cmd = [
         sys.executable, "eval/policy_changepoint_detection.py",
-        "--data_root", data_dir,
-        "--save_dir", output_dir,
+        "--data_dir", data_dir,
+        "--model_dir", model_dir,
+        "--output_dir", output_dir,
         "--epochs", "5",  # Reduced for demo
-        "--tau", "3"
+        "--window_size", "6"
     ]
     
     try:
@@ -70,17 +73,11 @@ def run_task_b2(data_dir: str, model_dir: str, output_dir: str):
 
 def main():
     """Run both Task B components"""
-    import argparse
     
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--data_root', default='data/v5_test_three_shifts')
-    parser.add_argument('--models_dir', default='runs')
-    parser.add_argument('--output_dir', default='reports/task_b')
-    args = parser.parse_args()
-    
-    data_dir = args.data_root
-    model_dir = args.models_dir
-    output_base = args.output_dir
+    # Default paths
+    data_dir = "data/v5_test_three_shifts"
+    model_dir = "runs"
+    output_base = "reports/v5.0_proper_demo/task_b_policy_representation"
     
     print("🔧 Running Task B Policy Representation with fixes")
     print(f"Data: {data_dir}")

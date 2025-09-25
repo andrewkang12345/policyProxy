@@ -26,9 +26,9 @@ class OptimizationTarget:
     """Target for opponent optimization."""
     shift_kind: str  # 'state_only', 'state_action', or 'policy'
     target_divergence: float
-    tolerance: float = 0.05
+    tolerance: float = 0.02
     max_iters: int = 100
-    lr: float = 0.1
+    lr: float = 0.01
 
 
 class DifferentiableOpponent(nn.Module):

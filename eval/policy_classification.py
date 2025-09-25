@@ -33,8 +33,8 @@ class PolicyClassifier(nn.Module):
         self.window = window
         
         # Feature encoder - handle variable input sizes
-        # Maximum possible input size for flexible architecture
-        max_input_size = input_dim * window * 3  # Assume max 3 agents
+        # Maximum possible input size for flexible architecture (accommodate 5D tensors)
+        max_input_size = input_dim * window * 3 * 2 * 2  # Account for extra dimensions
         
         self.input_projection = nn.Linear(max_input_size, hidden_dim)
         
@@ -76,16 +76,20 @@ class PolicyClassifier(nn.Module):
             B, W, D = x.shape
             x_flat = x.view(B, W * D)
         else:
-            raise ValueError(f"Unexpected input shape: {x.shape}")  # Flatten window
+            raise ValueError(f"Unexpected input shape: {x.shape}. Expected 3D, 4D, or 5D tensor.")
         
-        # Pad to maximum size if needed
-        max_size = self.input_dim * self.window * 3
-        if x_flat.size(1) < max_size:
-            import torch
-            padding = torch.zeros(x_flat.size(0), max_size - x_flat.size(1), device=x_flat.device)
+        # Dynamically handle variable input sizes by using flexible projection
+        import torch
+        current_size = x_flat.size(1)
+        
+        # Use a much larger max size to accommodate various input dimensions
+        max_possible_size = self.input_dim * self.window * 3 * 2 * 2  # Account for extra dimensions
+        
+        if current_size < max_possible_size:
+            padding = torch.zeros(x_flat.size(0), max_possible_size - current_size, device=x_flat.device)
             x_flat = torch.cat([x_flat, padding], dim=1)
-        elif x_flat.size(1) > max_size:
-            x_flat = x_flat[:, :max_size]  # Truncate if too large
+        elif current_size > max_possible_size:
+            x_flat = x_flat[:, :max_possible_size]  # Truncate if too large
         
         # Project to hidden dimension
         projected = self.input_projection(x_flat)

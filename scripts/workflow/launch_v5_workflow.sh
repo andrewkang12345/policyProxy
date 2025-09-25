@@ -207,7 +207,7 @@ for model_name in "${successful_models[@]}"; do
 done
 
 # Generate v5.0 plots
-python scripts/analysis/create_detailed_performance_plots.py \
+python scripts/create_v5_plots.py \
     --results_dir $DATA_ROOT \
     --output_dir $REPORTS_DIR/plots \
     2>&1 | tee logs/plotting_$RUN_TAG.log
