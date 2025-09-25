@@ -1,0 +1,68 @@
+Epoch 0/4: train_elbo=-2.1249, val_ADE=0.2222, val_FDE=0.2222, time=0.9s
+Epoch 1/4: train_elbo=-2.8305, val_ADE=0.2260, val_FDE=0.2260, time=0.5s
+Epoch 2/4: train_elbo=-3.1074, val_ADE=0.2176, val_FDE=0.2176, time=0.5s
+Epoch 3/4: train_elbo=-3.4113, val_ADE=0.2134, val_FDE=0.2134, time=0.5s
+Epoch 4/4: train_elbo=-3.6870, val_ADE=0.1928, val_FDE=0.1928, time=0.5s
+Training completed. Best val ADE: 0.1928
+{
+  "epochs": 5,
+  "results": [
+    {
+      "epoch": 0,
+      "train_elbo": -2.1248907944749273,
+      "val": {
+        "ADE": 0.2222369760274887,
+        "FDE": 0.2222369760274887
+      },
+      "epoch_time_sec": 0.9328410625457764
+    },
+    {
+      "epoch": 1,
+      "train_elbo": -2.8305067599765836,
+      "val": {
+        "ADE": 0.22598785161972046,
+        "FDE": 0.22598785161972046
+      },
+      "epoch_time_sec": 0.5239086151123047
+    },
+    {
+      "epoch": 2,
+      "train_elbo": -3.10741440833561,
+      "val": {
+        "ADE": 0.21759986877441406,
+        "FDE": 0.21759986877441406
+      },
+      "epoch_time_sec": 0.5234465599060059
+    },
+    {
+      "epoch": 3,
+      "train_elbo": -3.4113325542873807,
+      "val": {
+        "ADE": 0.21340005099773407,
+        "FDE": 0.21340005099773407
+      },
+      "epoch_time_sec": 0.5247232913970947
+    },
+    {
+      "epoch": 4,
+      "train_elbo": -3.6869727959708563,
+      "val": {
+        "ADE": 0.19275802373886108,
+        "FDE": 0.19275802373886108
+      },
+      "epoch_time_sec": 0.5238661766052246
+    }
+  ],
+  "num_policies": 2,
+  "policy_embed_dim": 16,
+  "latent": 16,
+  "hidden": 128,
+  "best_val": {
+    "ADE": 0.19275802373886108,
+    "FDE": 0.19275802373886108
+  },
+  "test": {
+    "ADE": 0.18551628291606903,
+    "FDE": 0.18551628291606903
+  }
+}

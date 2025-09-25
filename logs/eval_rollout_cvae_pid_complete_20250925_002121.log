@@ -1,0 +1,5 @@
+usage: rollout.py [-h] [--data_root DATA_ROOT] --model MODEL
+                  [--episodes EPISODES] [--device DEVICE]
+                  [--save_json SAVE_JSON] [--save_plot SAVE_PLOT]
+                  [--segmented_z]
+rollout.py: error: the following arguments are required: --model

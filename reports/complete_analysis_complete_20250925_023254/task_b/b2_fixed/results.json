@@ -1,0 +1,11 @@
+{
+  "task": "changepoint_detection",
+  "best_train_f1": 0.0,
+  "test_results": {
+    "f1_tau": 0.0,
+    "mabe": Infinity,
+    "delay_mean": Infinity
+  },
+  "segment_unaware": false,
+  "tau": 3
+}

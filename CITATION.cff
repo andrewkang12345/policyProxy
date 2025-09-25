@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: Adversarial Multi-Team Movement Dataset (Lag-Aware, State-Conditional)
+message: If you use this code or data, please cite this work.
+authors:
+  - family-names: Your
+    given-names: Name
+date-released: 2025-01-01
+doi: 10.5281/zenodo.fake-doi
+license: Apache-2.0
+

@@ -1,0 +1,88 @@
+{
+  "per_episode": [
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1596887514123598
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1545594930476494
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.14659409368204765
+    },
+    {
+      "collision_rate": 0.008333333333333333,
+      "smoothness": 0.15633464338900166
+    },
+    {
+      "collision_rate": 0.016666666666666666,
+      "smoothness": 0.1554214205383567
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1551023903322535
+    },
+    {
+      "collision_rate": 0.005555555555555556,
+      "smoothness": 0.14976793821611403
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.16484719926769092
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1680856326482483
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1485925611959325
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1443948672719946
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.17124653892891994
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.15802096586412243
+    },
+    {
+      "collision_rate": 0.05,
+      "smoothness": 0.1446461821479057
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.13739536940405161
+    },
+    {
+      "collision_rate": 0.008333333333333333,
+      "smoothness": 0.15718849269338347
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.16586255730995844
+    },
+    {
+      "collision_rate": 0.013888888888888888,
+      "smoothness": 0.14395170146301234
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.16330629698187646
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1545175648607101
+    }
+  ],
+  "aggregate": {
+    "collision_rate": 0.005138888888888889,
+    "smoothness": 0.15497623303277946
+  }
+}

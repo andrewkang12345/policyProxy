@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/mnt/data/policyProxy/eval/rollout.py", line 386, in <module>
+    main()
+  File "/mnt/data/policyProxy/eval/rollout.py", line 289, in main
+    state = torch.load(args.model, map_location=args.device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/serialization.py", line 1425, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/serialization.py", line 751, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/serialization.py", line 732, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'reports/complete_analysis_complete_20250925_010530/models/cvae_repr_complete_20250925_010530/model_best.pt'

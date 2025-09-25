@@ -1,0 +1,30 @@
+{
+  "v5_divergences": {
+    "ood_state_only_050": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_state_only_050/index.json'"
+    },
+    "ood_state_only_100": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_state_only_100/index.json'"
+    },
+    "ood_state_action_050": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_state_action_050/index.json'"
+    },
+    "ood_state_action_100": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_state_action_100/index.json'"
+    },
+    "ood_policy_050": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_policy_050/index.json'"
+    },
+    "ood_policy_100": {
+      "error": "[Errno 2] No such file or directory: 'data/v5_test_three_shifts/ood_policy_100/index.json'"
+    }
+  },
+  "methodology": {
+    "state_action_shifts": "gradient_optimized_opponents",
+    "policy_shifts": "direct_configuration",
+    "metrics": {
+      "state_action": "wasserstein_distance",
+      "policy": "jensen_shannon_divergence"
+    }
+  }
+}

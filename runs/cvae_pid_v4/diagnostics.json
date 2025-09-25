@@ -1,0 +1,8 @@
+{
+  "probe_acc_train": 0.5226470828056335,
+  "probe_acc_test": 0.5,
+  "cluster_purity_train": 0.5620588235294117,
+  "cluster_purity_test": 0.52,
+  "items_train": 3400,
+  "items_test": 1700
+}

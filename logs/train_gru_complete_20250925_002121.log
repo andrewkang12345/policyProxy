@@ -1,0 +1,4 @@
+usage: train_gru.py [-h] [--data_root DATA_ROOT] [--epochs EPOCHS]
+                    [--batch_size BATCH_SIZE] [--lr LR] [--device DEVICE]
+                    [--save_dir SAVE_DIR] [--gaussian_head]
+train_gru.py: error: unrecognized arguments: --hidden_size 128

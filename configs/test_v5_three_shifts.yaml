@@ -1,0 +1,127 @@
+generator:
+  seed: 421
+  dt: 0.25
+  steps: 20  # Smaller for faster testing
+  window: 6
+  teams: 2
+  agents_per_team: 2  # Smaller for faster testing
+  selected_team: 0
+  arena:
+    width: 20.0
+    height: 14.0
+    obstacle_count: 0
+    obstacle_radius: 1.0
+    obstacle_seed: 0
+  
+  # Ego policy mixture (balanced baseline, changed for policy shifts)
+  mixture:
+    scheduler: stagnant
+    min_dwell_steps: 8
+    init_weights: [0.5, 0.5]  # Will be modified for policy shifts
+  
+  # Define policies 
+  policies:
+    - family: proto_actions
+      id: P0
+      noise:
+        sigma: 0.10
+        type: gaussian
+      prototypes:
+        components: 3
+        style: random
+      regionizer:
+        length_scale: 0.7
+        smoother: rbf
+        type: smoothed
+      stochastic: false
+    
+    - family: proto_actions
+      id: P1
+      noise:
+        sigma: 0.12
+        type: gaussian
+      prototypes:
+        components: 3
+        style: random
+      regionizer:
+        length_scale: 0.8
+        smoother: rbf
+        type: smoothed
+      stochastic: true
+  
+  # Baseline opponent policies (will be optimized for state+action shifts)
+  opponent_policies:
+    - id: op_base0
+      family: random
+      stochastic: true
+      noise_sigma: 0.08
+      regionizer:
+        type: window_hash
+        length_scale: 0.25
+        centers_per_dim: [512, 1]  # Smaller for testing
+    - id: op_base1
+      family: random
+      stochastic: true
+      noise_sigma: 0.05
+      regionizer:
+        type: window_hash
+        length_scale: 0.2
+        centers_per_dim: [512, 1]  # Smaller for testing
+  
+  opponent_mixture:
+    scheduler: stagnant
+    init_weights: [1.0, 0.0]
+  
+  lag:
+    mode: fixed
+    fixed_k: 2
+    per_agent_hetero: false
+
+splits:
+  train_episodes: 20   # Small for testing
+  val_episodes: 5      # Small for testing
+  test_episodes: 10    # Small for testing
+
+# V5.0: Gradient-based optimization for all three distribution shifts
+gradient_optimization:
+  enabled: true
+  device: "cpu"
+  targets:
+    # 1. State-only shifts (gradient-optimized opponents)
+    - shift_kind: "state_only"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 20  # Reduced for testing
+      lr: 0.02
+    - shift_kind: "state_only"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 20
+      lr: 0.02
+    
+    # 2. State+action shifts (gradient-optimized with non-random ego policy correlation)
+    - shift_kind: "state_action"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 20
+      lr: 0.02
+    - shift_kind: "state_action"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 20
+      lr: 0.02
+    
+    # 3. Policy shifts (gradient-based optimization for opponent movement)
+    - shift_kind: "policy"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 20
+      lr: 0.02
+    - shift_kind: "policy"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 20
+      lr: 0.02
+
+# Policy shifts (direct configuration - legacy approach, disabled for test)
+policy_shift_configs: {}

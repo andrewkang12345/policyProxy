@@ -1,0 +1,28 @@
+{
+  "per_episode": [
+    {
+      "collision_rate": 0.030555555555555555,
+      "smoothness": 0.7800931052154378
+    },
+    {
+      "collision_rate": 0.03333333333333333,
+      "smoothness": 0.738900056768441
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.8368465985991351
+    },
+    {
+      "collision_rate": 0.005555555555555556,
+      "smoothness": 0.8708379941100305
+    },
+    {
+      "collision_rate": 0.011111111111111112,
+      "smoothness": 0.7931975676076052
+    }
+  ],
+  "aggregate": {
+    "collision_rate": 0.01611111111111111,
+    "smoothness": 0.80397506446013
+  }
+}

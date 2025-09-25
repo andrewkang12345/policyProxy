@@ -1,0 +1,12 @@
+numpy>=1.23
+pyyaml>=6.0
+tqdm>=4.64
+matplotlib>=3.7
+scikit-learn>=1.1
+
+[:platform_system != "Emscripten"]
+torch>=2.0
+
+[hf]
+datasets>=2.18
+pyarrow>=13.0

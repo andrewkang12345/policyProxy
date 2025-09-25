@@ -1,0 +1,25 @@
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:245: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:245: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:245: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:245: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:245: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:419: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:419: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:419: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+/mnt/data/policyProxy/scripts/analysis/create_three_shifts_performance_analysis.py:419: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+🔄 Loading baseline results...
+🔄 Loading shift data...
+🔄 Simulating three shifts performance...
+📊 Creating three shifts comparison plots...
+📊 Creating robustness ranking plot...
+📊 Creating ego policy analysis...
+✅ Three shifts analysis complete: reports/complete_analysis_complete_20250925_023254/analysis/three_shifts

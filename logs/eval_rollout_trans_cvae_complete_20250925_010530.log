@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/mnt/data/policyProxy/eval/rollout.py", line 386, in <module>
+    main()
+  File "/mnt/data/policyProxy/eval/rollout.py", line 290, in main
+    wrapper = RolloutModelWrapper(state, teams=Tteams, agents=Aagents, window=window, device=args.device, segmented_z=args.segmented_z)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/eval/rollout.py", line 134, in __init__
+    model.load_state_dict(state_dict, strict=False)
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2581, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for CVAE:
+	size mismatch for dec.proj.weight: copying a param with shape torch.Size([128, 12]) from checkpoint, the shape in current model is torch.Size([12, 144]).
+	size mismatch for dec.proj.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([12]).

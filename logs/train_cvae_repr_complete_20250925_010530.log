@@ -1,0 +1,20 @@
+Training Policy Representation Extractor for 5 epochs...
+Traceback (most recent call last):
+  File "/mnt/data/policyProxy/baselines/state_cond/train_policy_representation_extractor.py", line 291, in <module>
+    main()
+  File "/mnt/data/policyProxy/baselines/state_cond/train_policy_representation_extractor.py", line 258, in main
+    train_metrics = train_epoch(model, train_loader, optimizer, device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/baselines/state_cond/train_policy_representation_extractor.py", line 149, in train_epoch
+    policy_repr, policy_logits = model(states, actions)
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/baselines/state_cond/train_policy_representation_extractor.py", line 78, in forward
+    state_action = torch.cat([states, actions], dim=-1)  # [B, T, state_dim + action_dim]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Tensors must have same number of dimensions: got 5 and 3

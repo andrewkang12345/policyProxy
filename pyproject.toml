@@ -1,0 +1,42 @@
+[project]
+name = "lagged-marl"
+version = "0.1.0"
+description = "Adversarial multi-team movement dataset generator and baselines (lag-aware, state-conditional)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [{name = "Your Name", email = "you@example.com"}]
+dependencies = [
+  "numpy>=1.23",
+  "pyyaml>=6.0",
+  "tqdm>=4.64",
+  "matplotlib>=3.7",
+  "torch>=2.0; platform_system != 'Emscripten'",
+]
+
+[project.optional-dependencies]
+hf = []
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+ident-data = "tools.cli_data:main"
+ident-train = "tools.cli_train:main"
+ident-eval = "tools.cli_eval:main"
+ident-all = "tools.cli_all:main"
+ident-exp = "tools.cli_experiments:main"
+ident-train-cvae = "baselines.state_cond.train_cvae:main"
+ident-train-cvae-trans = "baselines.state_cond.train_cvae_transformer:main"
+ident-train-cvae-reg = "baselines.state_cond.train_cvae_reg:main"
+ident-train-cvae-inv = "baselines.state_cond.train_cvae_invariant:main"
+ident-gif = "eval.visualize_episode:main"
+
+[tool.setuptools]
+packages = { find = { where = ["."], include = [
+  "generator*", "eval*", "tasks*", "tools*", "baselines*"
+], exclude = [
+  "data*", "runs*", "configs*", "docs*", "*.dist-info*", "*__pycache__*"
+], namespaces = true } }
+

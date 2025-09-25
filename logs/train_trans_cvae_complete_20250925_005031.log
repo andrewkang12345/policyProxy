@@ -1,0 +1,7 @@
+usage: train_cvae_transformer.py [-h] [--data_root DATA_ROOT]
+                                 [--epochs EPOCHS] [--batch_size BATCH_SIZE]
+                                 [--lr LR] [--beta BETA] [--latent LATENT]
+                                 [--hidden HIDDEN] [--layers LAYERS]
+                                 [--nhead NHEAD] [--device DEVICE]
+                                 [--save_dir SAVE_DIR]
+train_cvae_transformer.py: error: unrecognized arguments: --num_heads 4

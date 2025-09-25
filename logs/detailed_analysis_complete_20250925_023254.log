@@ -1,0 +1,77 @@
+🔄 Loading baseline performance data...
+✅ Loaded data for 4 models
+  - cvae_pid: ['ADE', 'FDE', 'probe_accuracy', 'cluster_purity']
+  - cvae_reg: ['ADE', 'FDE', 'probe_accuracy', 'cluster_purity']
+  - gru: ['ADE', 'FDE', 'probe_accuracy', 'cluster_purity']
+  - trans_cvae: ['ADE', 'FDE', 'probe_accuracy', 'cluster_purity']
+
+📊 Creating performance degradation line plots...
+✅ Saved: action_prediction_state_only_Policy_0_degradation_curve.png
+✅ Saved: representation_quality_state_only_Policy_0_degradation_curve.png
+✅ Saved: policy_clustering_state_only_Policy_0_degradation_curve.png
+✅ Saved: action_prediction_state_only_Policy_1_degradation_curve.png
+✅ Saved: representation_quality_state_only_Policy_1_degradation_curve.png
+✅ Saved: policy_clustering_state_only_Policy_1_degradation_curve.png
+✅ Saved: action_prediction_state_action_Policy_0_degradation_curve.png
+✅ Saved: representation_quality_state_action_Policy_0_degradation_curve.png
+✅ Saved: policy_clustering_state_action_Policy_0_degradation_curve.png
+✅ Saved: action_prediction_state_action_Policy_1_degradation_curve.png
+✅ Saved: representation_quality_state_action_Policy_1_degradation_curve.png
+✅ Saved: policy_clustering_state_action_Policy_1_degradation_curve.png
+✅ Saved: action_prediction_policy_Policy_0_degradation_curve.png
+✅ Saved: representation_quality_policy_Policy_0_degradation_curve.png
+✅ Saved: policy_clustering_policy_Policy_0_degradation_curve.png
+✅ Saved: action_prediction_policy_Policy_1_degradation_curve.png
+✅ Saved: representation_quality_policy_Policy_1_degradation_curve.png
+✅ Saved: policy_clustering_policy_Policy_1_degradation_curve.png
+
+📊 Creating individual task comparison plots...
+✅ Saved: action_prediction_comparison_across_shifts.png
+✅ Saved: representation_quality_comparison_across_shifts.png
+✅ Saved: policy_clustering_comparison_across_shifts.png
+
+📊 Creating robustness ranking plot...
+✅ Saved: robustness_ranking_detailed.png
+
+🔍 Investigating task_b_policy_representation issue...
+📁 Checking directory: reports/v5.0_proper_demo/task_b_policy_representation
+Found 2 subdirectories:
+  - b2_fixed: 0 files
+    ⚠️  Empty directory
+  - b1_fixed: 0 files
+    ⚠️  Empty directory
+
+Found 0 related log files:
+
+Found files matching '*task_b*':
+  - logs/task_b_complete_20250925_002121.log
+  - logs/task_b_complete_20250925_005031.log
+  - logs/task_b_complete_20250925_023254.log
+  - logs/task_b_complete_20250925_010530.log
+  - scripts/fixes/fix_task_b_issues.py
+  - scripts/fixes/run_task_b_fixed.py
+  - scripts/fixes/__pycache__/fix_task_b_issues.cpython-312.pyc
+  - scripts/fixes/__pycache__/run_task_b_fixed.cpython-312.pyc
+  - reports/complete_analysis_complete_20250925_023254/task_b
+  - reports/v5.0_proper_demo/task_b_policy_representation
+  - reports/complete_analysis_complete_20250925_010530/task_b
+
+Found files matching '*b1_*':
+  - reports/complete_analysis_complete_20250925_023254/task_b/b1_fixed
+  - reports/v5.0_proper_demo/task_b_policy_representation/b1_fixed
+  - reports/complete_analysis_complete_20250925_010530/task_b/b1_fixed
+
+Found files matching '*b2_*':
+  - reports/complete_analysis_complete_20250925_023254/task_b/b2_fixed
+  - reports/v5.0_proper_demo/task_b_policy_representation/b2_fixed
+  - reports/complete_analysis_complete_20250925_010530/task_b/b2_fixed
+
+Found files matching '*policy_representation*':
+  - reports/v5.0_proper_demo/task_b_policy_representation
+
+✅ All detailed plots generated in: reports/complete_analysis_complete_20250925_023254/analysis/detailed_performance
+
+Generated plot categories:
+  - Degradation curves: 18 plots
+  - Task comparisons: 3 plots
+  - Robustness ranking: 1 plot

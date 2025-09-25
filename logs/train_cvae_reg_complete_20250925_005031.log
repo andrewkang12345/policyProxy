@@ -1,0 +1,5 @@
+usage: train_cvae_reg.py [-h] [--data_root DATA_ROOT] [--epochs EPOCHS]
+                         [--batch_size BATCH_SIZE] [--lr LR] [--beta BETA]
+                         [--latent LATENT] [--hidden HIDDEN] [--reg REG]
+                         [--device DEVICE] [--save_dir SAVE_DIR]
+train_cvae_reg.py: error: unrecognized arguments: --reg_weight 0.1

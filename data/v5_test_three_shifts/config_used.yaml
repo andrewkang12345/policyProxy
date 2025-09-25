@@ -1,0 +1,116 @@
+generator:
+  agents_per_team: 2
+  arena:
+    height: 14.0
+    obstacle_count: 0
+    obstacle_radius: 1.0
+    obstacle_seed: 0
+    width: 20.0
+  dt: 0.25
+  lag:
+    fixed_k: 2
+    mode: fixed
+    per_agent_hetero: false
+  mixture:
+    init_weights:
+    - 0.5
+    - 0.5
+    min_dwell_steps: 8
+    scheduler: stagnant
+  opponent_mixture:
+    init_weights:
+    - 1.0
+    - 0.0
+    scheduler: stagnant
+  opponent_policies:
+  - family: random
+    id: op_base0
+    noise_sigma: 0.08
+    regionizer:
+      centers_per_dim:
+      - 512
+      - 1
+      length_scale: 0.25
+      type: window_hash
+    stochastic: true
+  - family: random
+    id: op_base1
+    noise_sigma: 0.05
+    regionizer:
+      centers_per_dim:
+      - 512
+      - 1
+      length_scale: 0.2
+      type: window_hash
+    stochastic: true
+  policies:
+  - family: proto_actions
+    id: P0
+    noise:
+      sigma: 0.1
+      type: gaussian
+    prototypes:
+      components: 3
+      style: random
+    regionizer:
+      length_scale: 0.7
+      smoother: rbf
+      type: smoothed
+    stochastic: false
+  - family: proto_actions
+    id: P1
+    noise:
+      sigma: 0.12
+      type: gaussian
+    prototypes:
+      components: 3
+      style: random
+    regionizer:
+      length_scale: 0.8
+      smoother: rbf
+      type: smoothed
+    stochastic: true
+  seed: 421
+  selected_team: 0
+  steps: 20
+  teams: 2
+  window: 6
+gradient_optimization:
+  device: cpu
+  enabled: true
+  targets:
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: state_only
+    target_divergence: 0.05
+    tolerance: 0.02
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: state_only
+    target_divergence: 0.1
+    tolerance: 0.02
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: state_action
+    target_divergence: 0.05
+    tolerance: 0.02
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: state_action
+    target_divergence: 0.1
+    tolerance: 0.02
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: policy
+    target_divergence: 0.05
+    tolerance: 0.02
+  - lr: 0.02
+    max_iters: 20
+    shift_kind: policy
+    target_divergence: 0.1
+    tolerance: 0.02
+policy_shift_configs: {}
+splits:
+  test_episodes: 10
+  train_episodes: 20
+  val_episodes: 5

@@ -1,0 +1,10 @@
+[console_scripts]
+ident-all = tools.cli_all:main
+ident-data = tools.cli_data:main
+ident-eval = tools.cli_eval:main
+ident-exp = tools.cli_experiments:main
+ident-train = tools.cli_train:main
+ident-train-cvae = baselines.state_cond.train_cvae:main
+ident-train-cvae-inv = baselines.state_cond.train_cvae_invariant:main
+ident-train-cvae-reg = baselines.state_cond.train_cvae_reg:main
+ident-train-cvae-trans = baselines.state_cond.train_cvae_transformer:main

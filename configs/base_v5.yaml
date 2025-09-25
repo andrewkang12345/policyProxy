@@ -1,0 +1,170 @@
+generator:
+  seed: 421
+  dt: 0.25
+  steps: 40  # Tiny episodes for speed
+  window: 6
+  teams: 2
+  agents_per_team: 3
+  selected_team: 0
+  arena:
+    width: 20.0
+    height: 14.0
+    obstacle_count: 0
+    obstacle_radius: 1.0
+    obstacle_seed: 0
+  
+  # Ego policy mixture (balanced baseline, changed for policy shifts)
+  mixture:
+    scheduler: stagnant
+    min_dwell_steps: 8
+    init_weights: [0.5, 0.5]  # Will be modified for policy shifts
+  
+  # Define policies 
+  policies:
+    - family: proto_actions
+      id: P0
+      noise:
+        sigma: 0.10
+        type: gaussian
+      prototypes:
+        components: 4
+        style: random
+      regionizer:
+        length_scale: 0.7
+        smoother: rbf
+        type: smoothed
+      stochastic: false
+    
+    - family: proto_actions
+      id: P1
+      noise:
+        sigma: 0.12
+        type: gaussian
+      prototypes:
+        components: 4
+        style: random
+      regionizer:
+        length_scale: 0.8
+        smoother: rbf
+        type: smoothed
+      stochastic: true
+  
+  # Baseline opponent policies (will be optimized for state+action shifts)
+  opponent_policies:
+    - id: op_base0
+      family: random
+      stochastic: true
+      noise_sigma: 0.08
+      regionizer:
+        type: window_hash
+        length_scale: 0.25
+        centers_per_dim: [2048, 1]
+    - id: op_base1
+      family: random
+      stochastic: true
+      noise_sigma: 0.05
+      regionizer:
+        type: window_hash
+        length_scale: 0.2
+        centers_per_dim: [2048, 1]
+  
+  opponent_mixture:
+    scheduler: stagnant
+    init_weights: [1.0, 0.0]
+  
+  lag:
+    mode: fixed
+    fixed_k: 2
+    per_agent_hetero: false
+
+splits:
+  train_episodes: 120   # Reasonable size for demo
+  val_episodes: 30      # Reasonable size for demo  
+  test_episodes: 60     # Reasonable size for demo
+
+# V5.0: Gradient-based optimization for state+action shifts
+gradient_optimization:
+  enabled: true
+  device: "cpu"  # Change to "cuda" if available
+  targets:
+    # State-only shifts (gradient-optimized opponents)
+    - shift_kind: "state_only"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_only"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_only"
+      target_divergence: 0.15
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_only"
+      target_divergence: 0.20
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    
+    # State+action shifts (gradient-optimized opponents)
+    - shift_kind: "state_action"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_action"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_action"
+      target_divergence: 0.15
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "state_action"
+      target_divergence: 0.20
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    
+    # Policy shifts (now with gradient-based optimization for opponent movement)
+    - shift_kind: "policy"
+      target_divergence: 0.05
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "policy"
+      target_divergence: 0.10
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "policy"
+      target_divergence: 0.15
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+    - shift_kind: "policy"
+      target_divergence: 0.20
+      tolerance: 0.02
+      max_iters: 80
+      lr: 0.01
+
+# Policy shifts (direct configuration - legacy approach)
+policy_shift_configs:
+  # Policy shifts by changing mixture weights (kept for backward compatibility)
+  policy_050:
+    mixture:
+      init_weights: [0.55, 0.45]  # Slight shift
+  policy_100:
+    mixture:
+      init_weights: [0.60, 0.40]  # Moderate shift
+  policy_150:
+    mixture:
+      init_weights: [0.70, 0.30]  # Strong shift
+  policy_200:
+    mixture:
+      init_weights: [0.80, 0.20]  # Very strong shift

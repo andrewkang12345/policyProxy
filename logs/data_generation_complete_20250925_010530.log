@@ -1,0 +1,195 @@
+[make_data] Warning: unknown generator override key 'gradient_optimization' ignored
+[make_data] Warning: unknown generator override key 'policy_shift_configs' ignored
+🚀 Starting v5.0 data generation with gradient optimization
+Configuration: configs/base_v5.yaml
+Output: data/complete_analysis_complete_20250925_010530
+Device: cpu
+
+📊 Step 1: Generating baseline IID splits
+train:   0%|          | 0/120 [00:00<?, ?it/s]train:   5%|▌         | 6/120 [00:00<00:02, 52.23it/s]train:  10%|█         | 12/120 [00:00<00:02, 52.11it/s]train:  15%|█▌        | 18/120 [00:00<00:01, 52.32it/s]train:  20%|██        | 24/120 [00:00<00:01, 51.73it/s]train:  25%|██▌       | 30/120 [00:00<00:01, 51.98it/s]train:  30%|███       | 36/120 [00:00<00:01, 52.19it/s]train:  35%|███▌      | 42/120 [00:00<00:01, 52.29it/s]train:  40%|████      | 48/120 [00:00<00:01, 52.50it/s]train:  45%|████▌     | 54/120 [00:01<00:01, 52.62it/s]train:  50%|█████     | 60/120 [00:01<00:01, 52.85it/s]train:  55%|█████▌    | 66/120 [00:01<00:01, 52.80it/s]train:  60%|██████    | 72/120 [00:01<00:00, 52.85it/s]train:  65%|██████▌   | 78/120 [00:01<00:00, 52.69it/s]train:  70%|███████   | 84/120 [00:01<00:00, 52.29it/s]train:  75%|███████▌  | 90/120 [00:01<00:00, 52.16it/s]train:  80%|████████  | 96/120 [00:01<00:00, 52.62it/s]train:  85%|████████▌ | 102/120 [00:01<00:00, 52.43it/s]train:  90%|█████████ | 108/120 [00:02<00:00, 52.65it/s]train:  95%|█████████▌| 114/120 [00:02<00:00, 52.50it/s]train: 100%|██████████| 120/120 [00:02<00:00, 52.41it/s]train: 100%|██████████| 120/120 [00:02<00:00, 52.43it/s]
+val:   0%|          | 0/30 [00:00<?, ?it/s]val:  20%|██        | 6/30 [00:00<00:00, 52.06it/s]val:  40%|████      | 12/30 [00:00<00:00, 52.19it/s]val:  60%|██████    | 18/30 [00:00<00:00, 51.90it/s]val:  80%|████████  | 24/30 [00:00<00:00, 52.17it/s]val: 100%|██████████| 30/30 [00:00<00:00, 52.56it/s]val: 100%|██████████| 30/30 [00:00<00:00, 52.34it/s]
+test:   0%|          | 0/60 [00:00<?, ?it/s]test:  10%|█         | 6/60 [00:00<00:01, 52.59it/s]test:  20%|██        | 12/60 [00:00<00:00, 53.03it/s]test:  30%|███       | 18/60 [00:00<00:00, 53.03it/s]test:  40%|████      | 24/60 [00:00<00:00, 52.66it/s]test:  50%|█████     | 30/60 [00:00<00:00, 52.61it/s]test:  60%|██████    | 36/60 [00:00<00:00, 52.40it/s]test:  70%|███████   | 42/60 [00:00<00:00, 52.12it/s]test:  80%|████████  | 48/60 [00:00<00:00, 52.38it/s]test:  90%|█████████ | 54/60 [00:01<00:00, 52.33it/s]test: 100%|██████████| 60/60 [00:01<00:00, 51.71it/s]test: 100%|██████████| 60/60 [00:01<00:00, 52.25it/s]
+
+🔧 Step 2: Gradient-based opponent optimization
+
+🎯 Optimizing for state_only_050
+🔧 Optimizing opponent for state_only shift (target: 0.050)
+  Iteration 0: divergence=9.2516, target=0.050, loss=84.669197
+  Iteration 20: divergence=9.2718, target=0.050, loss=85.042191
+  Iteration 40: divergence=8.4274, target=0.050, loss=70.180199
+  Iteration 60: divergence=8.4156, target=0.050, loss=69.982826
+  ⚠️  Max iterations reached. Final divergence: 8.8973 (target: 0.050)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_only_050.pt
+
+🎯 Optimizing for state_only_100
+🔧 Optimizing opponent for state_only shift (target: 0.100)
+  Iteration 0: divergence=9.4365, target=0.100, loss=87.169769
+  Iteration 20: divergence=8.6315, target=0.100, loss=72.785645
+  Iteration 40: divergence=9.1346, target=0.100, loss=81.623695
+  Iteration 60: divergence=8.5490, target=0.100, loss=71.384949
+  ⚠️  Max iterations reached. Final divergence: 8.5115 (target: 0.100)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_only_100.pt
+
+🎯 Optimizing for state_only_150
+🔧 Optimizing opponent for state_only shift (target: 0.150)
+  Iteration 0: divergence=9.6748, target=0.150, loss=90.722351
+  Iteration 20: divergence=8.8161, target=0.150, loss=75.101082
+  Iteration 40: divergence=8.6189, target=0.150, loss=71.722847
+  Iteration 60: divergence=8.3643, target=0.150, loss=67.474571
+  ⚠️  Max iterations reached. Final divergence: 8.0697 (target: 0.150)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_only_150.pt
+
+🎯 Optimizing for state_only_200
+🔧 Optimizing opponent for state_only shift (target: 0.200)
+  Iteration 0: divergence=9.1168, target=0.200, loss=79.508682
+  Iteration 20: divergence=7.9194, target=0.200, loss=59.589252
+  Iteration 40: divergence=8.9995, target=0.200, loss=77.431458
+  Iteration 60: divergence=8.6659, target=0.200, loss=71.672264
+  ⚠️  Max iterations reached. Final divergence: 7.2678 (target: 0.200)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_only_200.pt
+
+🎯 Optimizing for state_action_050
+🔧 Optimizing opponent for state_action shift (target: 0.050)
+  Iteration 0: divergence=4.7665, target=0.050, loss=22.244987
+  Iteration 20: divergence=3.0877, target=0.050, loss=9.227508
+  Iteration 40: divergence=2.7217, target=0.050, loss=7.137982
+  Iteration 60: divergence=1.8282, target=0.050, loss=3.161884
+  ⚠️  Max iterations reached. Final divergence: 1.7344 (target: 0.050)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_action_050.pt
+
+🎯 Optimizing for state_action_100
+🔧 Optimizing opponent for state_action shift (target: 0.100)
+  Iteration 0: divergence=4.5610, target=0.100, loss=19.900402
+  Iteration 20: divergence=3.2958, target=0.100, loss=10.212823
+  Iteration 40: divergence=2.2923, target=0.100, loss=4.806347
+  Iteration 60: divergence=1.7337, target=0.100, loss=2.668840
+  ⚠️  Max iterations reached. Final divergence: 1.8225 (target: 0.100)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_action_100.pt
+
+🎯 Optimizing for state_action_150
+🔧 Optimizing opponent for state_action shift (target: 0.150)
+  Iteration 0: divergence=4.8001, target=0.150, loss=21.623703
+  Iteration 20: divergence=3.7120, target=0.150, loss=12.687944
+  Iteration 40: divergence=2.7410, target=0.150, loss=6.713538
+  Iteration 60: divergence=1.9941, target=0.150, loss=3.400555
+  ⚠️  Max iterations reached. Final divergence: 1.5700 (target: 0.150)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_action_150.pt
+
+🎯 Optimizing for state_action_200
+🔧 Optimizing opponent for state_action shift (target: 0.200)
+  Iteration 0: divergence=4.8188, target=0.200, loss=21.333223
+  Iteration 20: divergence=3.3416, target=0.200, loss=9.869485
+  Iteration 40: divergence=2.3436, target=0.200, loss=4.594883
+  Iteration 60: divergence=2.0294, target=0.200, loss=3.346722
+  ⚠️  Max iterations reached. Final divergence: 1.5860 (target: 0.200)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_state_action_200.pt
+
+🎯 Optimizing for policy_050
+🔧 Optimizing opponent for policy shift (target: 0.050)
+  Iteration 0: divergence=0.0001, target=0.050, loss=0.002485
+  Iteration 20: divergence=0.0001, target=0.050, loss=0.002485
+  Iteration 40: divergence=0.0001, target=0.050, loss=0.002485
+  Iteration 60: divergence=0.0001, target=0.050, loss=0.002485
+  ⚠️  Max iterations reached. Final divergence: 0.0001 (target: 0.050)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_policy_050.pt
+
+🎯 Optimizing for policy_100
+🔧 Optimizing opponent for policy shift (target: 0.100)
+  Iteration 0: divergence=0.0001, target=0.100, loss=0.009971
+  Iteration 20: divergence=0.0001, target=0.100, loss=0.009971
+  Iteration 40: divergence=0.0001, target=0.100, loss=0.009971
+  Iteration 60: divergence=0.0001, target=0.100, loss=0.009971
+  ⚠️  Max iterations reached. Final divergence: 0.0001 (target: 0.100)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_policy_100.pt
+
+🎯 Optimizing for policy_150
+🔧 Optimizing opponent for policy shift (target: 0.150)
+  Iteration 0: divergence=0.0001, target=0.150, loss=0.022456
+  Iteration 20: divergence=0.0001, target=0.150, loss=0.022456
+  Iteration 40: divergence=0.0001, target=0.150, loss=0.022456
+  Iteration 60: divergence=0.0001, target=0.150, loss=0.022456
+  ⚠️  Max iterations reached. Final divergence: 0.0001 (target: 0.150)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_policy_150.pt
+
+🎯 Optimizing for policy_200
+🔧 Optimizing opponent for policy shift (target: 0.200)
+  Iteration 0: divergence=0.0001, target=0.200, loss=0.039941
+  Iteration 20: divergence=0.0001, target=0.200, loss=0.039941
+  Iteration 40: divergence=0.0001, target=0.200, loss=0.039941
+  Iteration 60: divergence=0.0001, target=0.200, loss=0.039941
+  ⚠️  Max iterations reached. Final divergence: 0.0001 (target: 0.200)
+📁 Optimized opponent saved to data/complete_analysis_complete_20250925_010530/optimized_opponents/opponent_policy_200.pt
+
+📊 Step 3: Generating state/action shifts with optimized opponents
+📊 Generating ood_state_only_050 with optimized opponent (30 episodes)
+ood_state_only_050:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_only_050:  20%|██        | 6/30 [00:00<00:00, 52.03it/s]ood_state_only_050:  40%|████      | 12/30 [00:00<00:00, 52.45it/s]ood_state_only_050:  60%|██████    | 18/30 [00:00<00:00, 52.61it/s]ood_state_only_050:  80%|████████  | 24/30 [00:00<00:00, 52.70it/s]ood_state_only_050: 100%|██████████| 30/30 [00:00<00:00, 52.73it/s]ood_state_only_050: 100%|██████████| 30/30 [00:00<00:00, 52.63it/s]
+✅ Generated ood_state_only_050 at data/complete_analysis_complete_20250925_010530/ood_state_only_050
+⚠️ Could not compute divergences for state_only: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_only_050/index.json'
+  ood_state_only_050: achieved divergence = 8.8973 (target: 0.050)
+📊 Generating ood_state_only_100 with optimized opponent (30 episodes)
+ood_state_only_100:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_only_100:  20%|██        | 6/30 [00:00<00:00, 52.64it/s]ood_state_only_100:  40%|████      | 12/30 [00:00<00:00, 52.31it/s]ood_state_only_100:  60%|██████    | 18/30 [00:00<00:00, 52.52it/s]ood_state_only_100:  80%|████████  | 24/30 [00:00<00:00, 52.36it/s]ood_state_only_100: 100%|██████████| 30/30 [00:00<00:00, 53.07it/s]ood_state_only_100: 100%|██████████| 30/30 [00:00<00:00, 52.78it/s]
+✅ Generated ood_state_only_100 at data/complete_analysis_complete_20250925_010530/ood_state_only_100
+⚠️ Could not compute divergences for state_only: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_only_100/index.json'
+  ood_state_only_100: achieved divergence = 8.5115 (target: 0.100)
+📊 Generating ood_state_only_150 with optimized opponent (30 episodes)
+ood_state_only_150:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_only_150:  20%|██        | 6/30 [00:00<00:00, 53.60it/s]ood_state_only_150:  40%|████      | 12/30 [00:00<00:00, 52.79it/s]ood_state_only_150:  60%|██████    | 18/30 [00:00<00:00, 53.23it/s]ood_state_only_150:  80%|████████  | 24/30 [00:00<00:00, 53.93it/s]ood_state_only_150: 100%|██████████| 30/30 [00:00<00:00, 53.48it/s]ood_state_only_150: 100%|██████████| 30/30 [00:00<00:00, 53.44it/s]
+✅ Generated ood_state_only_150 at data/complete_analysis_complete_20250925_010530/ood_state_only_150
+⚠️ Could not compute divergences for state_only: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_only_150/index.json'
+  ood_state_only_150: achieved divergence = 8.0697 (target: 0.150)
+📊 Generating ood_state_only_200 with optimized opponent (30 episodes)
+ood_state_only_200:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_only_200:  20%|██        | 6/30 [00:00<00:00, 52.19it/s]ood_state_only_200:  40%|████      | 12/30 [00:00<00:00, 52.71it/s]ood_state_only_200:  60%|██████    | 18/30 [00:00<00:00, 52.23it/s]ood_state_only_200:  80%|████████  | 24/30 [00:00<00:00, 52.80it/s]ood_state_only_200: 100%|██████████| 30/30 [00:00<00:00, 52.76it/s]ood_state_only_200: 100%|██████████| 30/30 [00:00<00:00, 52.65it/s]
+✅ Generated ood_state_only_200 at data/complete_analysis_complete_20250925_010530/ood_state_only_200
+⚠️ Could not compute divergences for state_only: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_only_200/index.json'
+  ood_state_only_200: achieved divergence = 7.2678 (target: 0.200)
+📊 Generating ood_state_action_050 with optimized opponent (30 episodes)
+ood_state_action_050:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_action_050:  20%|██        | 6/30 [00:00<00:00, 51.94it/s]ood_state_action_050:  40%|████      | 12/30 [00:00<00:00, 52.90it/s]ood_state_action_050:  60%|██████    | 18/30 [00:00<00:00, 53.29it/s]ood_state_action_050:  80%|████████  | 24/30 [00:00<00:00, 52.80it/s]ood_state_action_050: 100%|██████████| 30/30 [00:00<00:00, 52.54it/s]ood_state_action_050: 100%|██████████| 30/30 [00:00<00:00, 52.67it/s]
+✅ Generated ood_state_action_050 at data/complete_analysis_complete_20250925_010530/ood_state_action_050
+⚠️ Could not compute divergences for state_action: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_action_050/index.json'
+  ood_state_action_050: achieved divergence = 1.7344 (target: 0.050)
+📊 Generating ood_state_action_100 with optimized opponent (30 episodes)
+ood_state_action_100:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_action_100:  20%|██        | 6/30 [00:00<00:00, 52.47it/s]ood_state_action_100:  40%|████      | 12/30 [00:00<00:00, 53.09it/s]ood_state_action_100:  60%|██████    | 18/30 [00:00<00:00, 52.84it/s]ood_state_action_100:  80%|████████  | 24/30 [00:00<00:00, 53.37it/s]ood_state_action_100: 100%|██████████| 30/30 [00:00<00:00, 53.20it/s]ood_state_action_100: 100%|██████████| 30/30 [00:00<00:00, 53.11it/s]
+✅ Generated ood_state_action_100 at data/complete_analysis_complete_20250925_010530/ood_state_action_100
+⚠️ Could not compute divergences for state_action: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_action_100/index.json'
+  ood_state_action_100: achieved divergence = 1.8225 (target: 0.100)
+📊 Generating ood_state_action_150 with optimized opponent (30 episodes)
+ood_state_action_150:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_action_150:  20%|██        | 6/30 [00:00<00:00, 54.27it/s]ood_state_action_150:  40%|████      | 12/30 [00:00<00:00, 52.46it/s]ood_state_action_150:  60%|██████    | 18/30 [00:00<00:00, 52.95it/s]ood_state_action_150:  80%|████████  | 24/30 [00:00<00:00, 53.19it/s]ood_state_action_150: 100%|██████████| 30/30 [00:00<00:00, 52.38it/s]ood_state_action_150: 100%|██████████| 30/30 [00:00<00:00, 52.69it/s]
+✅ Generated ood_state_action_150 at data/complete_analysis_complete_20250925_010530/ood_state_action_150
+⚠️ Could not compute divergences for state_action: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_action_150/index.json'
+  ood_state_action_150: achieved divergence = 1.5700 (target: 0.150)
+📊 Generating ood_state_action_200 with optimized opponent (30 episodes)
+ood_state_action_200:   0%|          | 0/30 [00:00<?, ?it/s]ood_state_action_200:  20%|██        | 6/30 [00:00<00:00, 53.58it/s]ood_state_action_200:  40%|████      | 12/30 [00:00<00:00, 52.75it/s]ood_state_action_200:  60%|██████    | 18/30 [00:00<00:00, 53.54it/s]ood_state_action_200:  80%|████████  | 24/30 [00:00<00:00, 53.83it/s]ood_state_action_200: 100%|██████████| 30/30 [00:00<00:00, 53.48it/s]ood_state_action_200: 100%|██████████| 30/30 [00:00<00:00, 53.46it/s]
+✅ Generated ood_state_action_200 at data/complete_analysis_complete_20250925_010530/ood_state_action_200
+⚠️ Could not compute divergences for state_action: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_state_action_200/index.json'
+  ood_state_action_200: achieved divergence = 1.5860 (target: 0.200)
+📊 Generating ood_policy_050 with optimized opponent (30 episodes)
+ood_policy_050:   0%|          | 0/30 [00:00<?, ?it/s]ood_policy_050:  20%|██        | 6/30 [00:00<00:00, 53.44it/s]ood_policy_050:  40%|████      | 12/30 [00:00<00:00, 53.45it/s]ood_policy_050:  60%|██████    | 18/30 [00:00<00:00, 53.53it/s]ood_policy_050:  80%|████████  | 24/30 [00:00<00:00, 53.79it/s]ood_policy_050: 100%|██████████| 30/30 [00:00<00:00, 53.15it/s]ood_policy_050: 100%|██████████| 30/30 [00:00<00:00, 53.33it/s]
+✅ Generated ood_policy_050 at data/complete_analysis_complete_20250925_010530/ood_policy_050
+⚠️ Could not compute divergences for policy: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_policy_050/index.json'
+  ood_policy_050: achieved divergence = 0.0001 (target: 0.050)
+📊 Generating ood_policy_100 with optimized opponent (30 episodes)
+ood_policy_100:   0%|          | 0/30 [00:00<?, ?it/s]ood_policy_100:  20%|██        | 6/30 [00:00<00:00, 55.06it/s]ood_policy_100:  40%|████      | 12/30 [00:00<00:00, 54.63it/s]ood_policy_100:  60%|██████    | 18/30 [00:00<00:00, 54.35it/s]ood_policy_100:  80%|████████  | 24/30 [00:00<00:00, 53.63it/s]ood_policy_100: 100%|██████████| 30/30 [00:00<00:00, 54.22it/s]ood_policy_100: 100%|██████████| 30/30 [00:00<00:00, 54.22it/s]
+✅ Generated ood_policy_100 at data/complete_analysis_complete_20250925_010530/ood_policy_100
+⚠️ Could not compute divergences for policy: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_policy_100/index.json'
+  ood_policy_100: achieved divergence = 0.0001 (target: 0.100)
+📊 Generating ood_policy_150 with optimized opponent (30 episodes)
+ood_policy_150:   0%|          | 0/30 [00:00<?, ?it/s]ood_policy_150:  20%|██        | 6/30 [00:00<00:00, 54.34it/s]ood_policy_150:  40%|████      | 12/30 [00:00<00:00, 53.88it/s]ood_policy_150:  60%|██████    | 18/30 [00:00<00:00, 53.43it/s]ood_policy_150:  80%|████████  | 24/30 [00:00<00:00, 53.21it/s]ood_policy_150: 100%|██████████| 30/30 [00:00<00:00, 53.60it/s]ood_policy_150: 100%|██████████| 30/30 [00:00<00:00, 53.58it/s]
+✅ Generated ood_policy_150 at data/complete_analysis_complete_20250925_010530/ood_policy_150
+⚠️ Could not compute divergences for policy: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_policy_150/index.json'
+  ood_policy_150: achieved divergence = 0.0001 (target: 0.150)
+📊 Generating ood_policy_200 with optimized opponent (30 episodes)
+ood_policy_200:   0%|          | 0/30 [00:00<?, ?it/s]ood_policy_200:  20%|██        | 6/30 [00:00<00:00, 54.21it/s]ood_policy_200:  40%|████      | 12/30 [00:00<00:00, 54.18it/s]ood_policy_200:  60%|██████    | 18/30 [00:00<00:00, 53.85it/s]ood_policy_200:  80%|████████  | 24/30 [00:00<00:00, 53.37it/s]ood_policy_200: 100%|██████████| 30/30 [00:00<00:00, 53.67it/s]ood_policy_200: 100%|██████████| 30/30 [00:00<00:00, 53.72it/s]
+✅ Generated ood_policy_200 at data/complete_analysis_complete_20250925_010530/ood_policy_200
+⚠️ Could not compute divergences for policy: [Errno 2] No such file or directory: 'data/complete_analysis_complete_20250925_010530/ood_policy_200/index.json'
+  ood_policy_200: achieved divergence = 0.0001 (target: 0.200)
+
+📊 Step 4: Generating policy shifts with direct configuration
+📊 Generating ood_policy_050 with policy shift (30 episodes)
+Traceback (most recent call last):
+  File "/mnt/data/policyProxy/make_data_v5.py", line 330, in <module>
+    main()
+  File "/mnt/data/policyProxy/make_data_v5.py", line 284, in main
+    generate_policy_shift_split(
+  File "/mnt/data/policyProxy/make_data_v5.py", line 103, in generate_policy_shift_split
+    temp_config["generator"]["mixture"] = policy_config["mixture"]
+    ~~~~~~~~~~~^^^^^^^^^^^^^
+TypeError: 'GeneratorConfig' object is not subscriptable

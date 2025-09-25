@@ -1,0 +1,10 @@
+usage: train_policy_representation_extractor.py [-h] --data_root DATA_ROOT
+                                                --save_dir SAVE_DIR
+                                                [--epochs EPOCHS]
+                                                [--batch_size BATCH_SIZE]
+                                                [--lr LR]
+                                                [--hidden_dim HIDDEN_DIM]
+                                                [--repr_dim REPR_DIM]
+                                                [--num_policies NUM_POLICIES]
+                                                [--device DEVICE]
+train_policy_representation_extractor.py: error: unrecognized arguments: --beta 1e-3 --latent 16

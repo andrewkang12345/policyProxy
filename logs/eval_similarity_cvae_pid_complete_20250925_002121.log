@@ -1,0 +1,4 @@
+usage: rep_similarity.py [-h] --data_root DATA_ROOT --save_json SAVE_JSON
+                         [--device DEVICE] [--save_plot SAVE_PLOT]
+                         [--max_items MAX_ITEMS]
+rep_similarity.py: error: the following arguments are required: --save_json

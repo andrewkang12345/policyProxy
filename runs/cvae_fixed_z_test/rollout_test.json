@@ -1,0 +1,48 @@
+{
+  "per_episode": [
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.16422548778696067
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.15730236930284833
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.15003292289042075
+    },
+    {
+      "collision_rate": 0.005555555555555556,
+      "smoothness": 0.16607464297789978
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.19253675887636804
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1563937364153717
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.15362427196470027
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.17545931478141566
+    },
+    {
+      "collision_rate": 0.011111111111111112,
+      "smoothness": 0.17071454816116924
+    },
+    {
+      "collision_rate": 0.0,
+      "smoothness": 0.1498114621126608
+    }
+  ],
+  "aggregate": {
+    "collision_rate": 0.0016666666666666666,
+    "smoothness": 0.1636175515269815
+  }
+}

@@ -1,0 +1,52 @@
+🔧 Running Task B Policy Representation with fixes
+Data: data/complete_analysis_complete_20250925_010530
+Models: reports/complete_analysis_complete_20250925_010530/models
+Output: reports/complete_analysis_complete_20250925_010530/task_b
+🚀 Running Task B1: Policy Classification
+❌ Task B1 failed
+STDOUT: Training policy classifier for 5 epochs...
+
+STDERR: Traceback (most recent call last):
+  File "/mnt/data/policyProxy/eval/policy_classification.py", line 332, in <module>
+    main()
+  File "/mnt/data/policyProxy/eval/policy_classification.py", line 283, in main
+    best_acc = train_classifier(model, train_loader, val_loader, device, 
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/eval/policy_classification.py", line 141, in train_classifier
+    logits = model(states)
+             ^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/eval/policy_classification.py", line 75, in forward
+    raise ValueError(f"Unexpected input shape: {x.shape}")  # Flatten window
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unexpected input shape: torch.Size([32, 6, 2, 3, 2])
+
+🚀 Running Task B2: Policy Changepoint Detection
+❌ Task B2 failed
+STDOUT: Extracting training windows...
+Extracting validation windows...
+Extracting test windows...
+Training changepoint detector for 5 epochs...
+❌ Training data contains None values
+
+STDERR: Traceback (most recent call last):
+  File "/mnt/data/policyProxy/eval/policy_changepoint_detection.py", line 411, in <module>
+    main()
+  File "/mnt/data/policyProxy/eval/policy_changepoint_detection.py", line 371, in main
+    test_results = evaluate_changepoint_detection(model, test_data, device, args.tau)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/policyProxy/eval/policy_changepoint_detection.py", line 216, in evaluate_changepoint_detection
+    test_before = test_before.to(device)
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to'
+
+
+📊 Task B Results:
+  - B1 (Policy Classification): ❌ Failed
+  - B2 (Changepoint Detection): ❌ Failed
+⚠️ Some Task B components failed. Check logs for details.

@@ -1,0 +1,31 @@
+🔧 Running Task B Policy Representation with fixes
+Data: data/v5_test_three_shifts
+Models: runs
+Output: reports/v5.0_proper_demo/task_b_policy_representation
+🚀 Running Task B1: Policy Classification
+❌ Task B1 failed
+STDOUT: 
+STDERR: usage: policy_classification.py [-h] --data_root DATA_ROOT
+                                [--model_type MODEL_TYPE] --save_dir SAVE_DIR
+                                [--segment_aware] [--task TASK]
+                                [--epochs EPOCHS] [--batch_size BATCH_SIZE]
+                                [--device DEVICE] [--model MODEL]
+policy_classification.py: error: the following arguments are required: --data_root, --save_dir
+
+🚀 Running Task B2: Policy Changepoint Detection
+❌ Task B2 failed
+STDOUT: 
+STDERR: usage: policy_changepoint_detection.py [-h] --data_root DATA_ROOT
+                                       [--model_type MODEL_TYPE] --save_dir
+                                       SAVE_DIR [--segment_unaware]
+                                       [--task TASK] [--tau TAU]
+                                       [--window_size WINDOW_SIZE]
+                                       [--epochs EPOCHS] [--device DEVICE]
+                                       [--model MODEL]
+policy_changepoint_detection.py: error: the following arguments are required: --data_root, --save_dir
+
+
+📊 Task B Results:
+  - B1 (Policy Classification): ❌ Failed
+  - B2 (Changepoint Detection): ❌ Failed
+⚠️ Some Task B components failed. Check logs for details.

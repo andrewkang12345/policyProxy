@@ -1,0 +1,3 @@
+usage: diagnostics.py [-h] --data_root DATA_ROOT --run_dir RUN_DIR
+                      [--device DEVICE] [--max_items MAX_ITEMS]
+diagnostics.py: error: the following arguments are required: --run_dir

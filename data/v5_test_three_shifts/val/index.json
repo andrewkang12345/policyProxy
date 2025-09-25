@@ -1,0 +1,27 @@
+[
+  {
+    "path": "data/v5_test_three_shifts/val/ep_00000.npz",
+    "len": 21,
+    "sha256": "bdb01d45ffcd21fb0debdcc027c060193908c1facac10ecb92e1453f0bf03557"
+  },
+  {
+    "path": "data/v5_test_three_shifts/val/ep_00001.npz",
+    "len": 21,
+    "sha256": "497b6ab7a62299a9c1cca6693fa6e3f9eaddb755a15cae0cd0f1821963ba2534"
+  },
+  {
+    "path": "data/v5_test_three_shifts/val/ep_00002.npz",
+    "len": 21,
+    "sha256": "8dc84b60c39bfa5bcd20d77e2f5f4a334763aa96870859e279c689f84b048afc"
+  },
+  {
+    "path": "data/v5_test_three_shifts/val/ep_00003.npz",
+    "len": 21,
+    "sha256": "25728b38677331bb8a3921a948ff3c925eec7d11b4009f769a7d9fe2976755d8"
+  },
+  {
+    "path": "data/v5_test_three_shifts/val/ep_00004.npz",
+    "len": 21,
+    "sha256": "1e84826d7632247c73616e21417ccefb196514ac7dabc7f97561553cc5a824ff"
+  }
+]

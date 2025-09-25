@@ -1,0 +1,36 @@
+{
+  "task": "policy_classification",
+  "best_train_accuracy": 0.5852941176470589,
+  "test_results": {
+    "accuracy": 0.4392156862745098,
+    "f1_score": 0.4371663368793883,
+    "classification_report": {
+      "0": {
+        "precision": 0.40423728813559323,
+        "recall": 0.5196078431372549,
+        "f1-score": 0.4547187797902765,
+        "support": 918.0
+      },
+      "1": {
+        "precision": 0.4872093023255814,
+        "recall": 0.37344028520499106,
+        "f1-score": 0.4228052472250252,
+        "support": 1122.0
+      },
+      "accuracy": 0.4392156862745098,
+      "macro avg": {
+        "precision": 0.4457232952305873,
+        "recall": 0.446524064171123,
+        "f1-score": 0.43876201350765087,
+        "support": 2040.0
+      },
+      "weighted avg": {
+        "precision": 0.44987189594008675,
+        "recall": 0.4392156862745098,
+        "f1-score": 0.4371663368793883,
+        "support": 2040.0
+      }
+    }
+  },
+  "segment_aware": false
+}
