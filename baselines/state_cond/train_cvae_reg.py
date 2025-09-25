@@ -34,6 +34,10 @@ def main():
     ap.add_argument("--reg", type=float, default=1e-4)
     ap.add_argument("--device", type=str, default="cuda")
     ap.add_argument("--save_dir", type=str, default=None)
+    ap.add_argument("--global_latent", dest="global_latent", action="store_true", default=True,
+                    help="Use a single global latent vector shared across the dataset (default)")
+    ap.add_argument("--no_global_latent", dest="global_latent", action="store_false",
+                    help="Disable the global latent and infer per-sample z values")
     args = ap.parse_args()
 
     tr = os.path.join(args.data_root, "train", "index.json")
@@ -42,7 +46,7 @@ def main():
     ds_tr, ds_va, ds_te = NextFrameDataset(tr), NextFrameDataset(va), NextFrameDataset(te)
     W = ds_tr.window
     T, A = ds_tr[0]["state"].shape[1:3]
-    model = CVAE(teams=T, agents=A, window=W, hidden=args.hidden, latent=args.latent).to(args.device)
+    model = CVAE(teams=T, agents=A, window=W, hidden=args.hidden, latent=args.latent, global_z=args.global_latent).to(args.device)
     opt = torch.optim.Adam(model.parameters(), lr=args.lr)
     tr_loader = DataLoader(ds_tr, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=collate)
     va_loader = DataLoader(ds_va, batch_size=256, collate_fn=collate)
@@ -115,5 +119,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 

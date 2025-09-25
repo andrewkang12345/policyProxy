@@ -42,11 +42,18 @@ ready-to-use directory tree for evaluation.
 
 ## 3. Baselines
 
-Four training scripts cover the main study axes:
+The action-prediction task now ships with a richer baseline set:
 - `baselines/state_cond/train_cvae_pid.py` — CVAE conditioned on policy IDs (a-1).
-- `baselines/state_cond/train_cvae.py` (`--deterministic_latent`) — representation-aware CVAE (a-2).
+- `baselines/state_cond/train_cvae.py` — GRU encoder/decoder CVAE; combine
+  `--deterministic_latent` with `--global_latent/--no_global_latent` to toggle
+  between the representation-focused (global) and stochastic variants.
+- `baselines/state_cond/train_cvae_reg.py` — regularised CVAE with the same
+  global/per-sample latent switch via `--no_global_latent`.
+- `baselines/state_cond/train_cvae_transformer.py` — Transformer CVAE with
+  sampled latent (no global `z`).
 - `baselines/state_cond/train_gru.py` — GRU baseline.
-- `baselines/state_cond/train_cvae_transformer.py` — Transformer CVAE.
+- `baselines/state_cond/train_transformer_state.py` — deterministic Transformer
+  conditioned on the state window (no VAE structure).
 
 ## 4. Evaluation Suite
 

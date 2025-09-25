@@ -2,87 +2,27 @@
   "per_episode": [
     {
       "collision_rate": 0.0,
-      "smoothness": 1.2526114102321348
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.3084524682823602
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.3788329514996749
-    },
-    {
-      "collision_rate": 0.008333333333333333,
-      "smoothness": 1.3244510489922179
-    },
-    {
-      "collision_rate": 0.011111111111111112,
-      "smoothness": 1.2768930504311622
-    },
-    {
-      "collision_rate": 0.005555555555555556,
-      "smoothness": 1.3326457351916787
-    },
-    {
-      "collision_rate": 0.008333333333333333,
-      "smoothness": 1.266262755925291
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.3256577245184442
-    },
-    {
-      "collision_rate": 0.002777777777777778,
-      "smoothness": 1.4698697677885497
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.3855552688007755
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.6200429202820812
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.5003718446516288
-    },
-    {
-      "collision_rate": 0.0,
-      "smoothness": 1.3896302401178666
-    },
-    {
-      "collision_rate": 0.030555555555555555,
-      "smoothness": 1.5875643835837447
+      "smoothness": 1.2291976280953656
     },
     {
       "collision_rate": 0.013888888888888888,
-      "smoothness": 1.3370769995768952
-    },
-    {
-      "collision_rate": 0.030555555555555555,
-      "smoothness": 1.4232950237177955
-    },
-    {
-      "collision_rate": 0.013888888888888888,
-      "smoothness": 1.3659636827311248
-    },
-    {
-      "collision_rate": 0.005555555555555556,
-      "smoothness": 1.4321030836148412
+      "smoothness": 1.2169620050476426
     },
     {
       "collision_rate": 0.0,
-      "smoothness": 1.3824632449593695
+      "smoothness": 1.3962668560297804
+    },
+    {
+      "collision_rate": 0.025,
+      "smoothness": 1.113778709248268
     },
     {
       "collision_rate": 0.0,
-      "smoothness": 1.3750668150293406
+      "smoothness": 1.2178757821705595
     }
   ],
   "aggregate": {
-    "collision_rate": 0.006527777777777778,
-    "smoothness": 1.3867405209963488
+    "collision_rate": 0.0077777777777777776,
+    "smoothness": 1.2348161961183233
   }
 }

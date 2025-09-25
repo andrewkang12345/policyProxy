@@ -1,36 +1,36 @@
 {
   "v5_divergences": {
-    "ood_state_only_050": {
-      "ws_state": 1.0963211997101705
+    "ood_state_only_5000": {
+      "ws_state": 3.466045184627485
     },
-    "ood_state_only_100": {
-      "ws_state": 1.5767502781748772
+    "ood_state_only_10000": {
+      "ws_state": 2.2358553015192353
     },
-    "ood_state_only_150": {
-      "ws_state": 1.214732265646259
+    "ood_state_only_15000": {
+      "ws_state": 1.334074380348126
     },
-    "ood_state_only_200": {
-      "ws_state": 0.9193711013595263
+    "ood_state_only_20000": {
+      "ws_state": 3.2510131233433883
     },
-    "ood_state_action_050": {
-      "ws_state": 0.8399762807786465,
-      "ws_action": 0.052380827359641745,
-      "ws_combined": 0.44617855406914414
+    "ood_state_action_5000": {
+      "ws_state": 3.0034376297316827,
+      "ws_action": 0.053709605066396764,
+      "ws_combined": 1.5285736173990396
     },
-    "ood_state_action_100": {
-      "ws_state": 1.2555299795170627,
-      "ws_action": 0.06739115358417622,
-      "ws_combined": 0.6614605665506195
+    "ood_state_action_10000": {
+      "ws_state": 3.291070300762852,
+      "ws_action": 0.16565377473826326,
+      "ws_combined": 1.7283620377505575
     },
-    "ood_state_action_150": {
-      "ws_state": 1.7682170844078064,
-      "ws_action": 0.10778718384011882,
-      "ws_combined": 0.9380021341239626
+    "ood_state_action_15000": {
+      "ws_state": 2.1825271637737753,
+      "ws_action": 0.12049980809824773,
+      "ws_combined": 1.1515134859360114
     },
-    "ood_state_action_200": {
-      "ws_state": 1.124687623580297,
-      "ws_action": 0.10164684652118011,
-      "ws_combined": 0.6131672350507386
+    "ood_state_action_20000": {
+      "ws_state": 2.0812732761601604,
+      "ws_action": 0.01657135935083109,
+      "ws_combined": 1.0489223177554958
     },
     "ood_policy_050": {
       "js_policy": 0.005059389928987545

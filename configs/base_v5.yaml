@@ -1,7 +1,7 @@
 generator:
   seed: 421
   dt: 0.25
-  steps: 40  # Tiny episodes for speed
+  steps: 400
   window: 6
   teams: 2
   agents_per_team: 3
@@ -78,60 +78,60 @@ generator:
     per_agent_hetero: false
 
 splits:
-  train_episodes: 120   # Reasonable size for demo
-  val_episodes: 30      # Reasonable size for demo  
-  test_episodes: 60     # Reasonable size for demo
+  train_episodes: 1200
+  val_episodes: 300
+  test_episodes: 600
 
 # V5.0: Gradient-based optimization for state+action shifts
 gradient_optimization:
   enabled: true
-  device: "cpu"  # Change to "cuda" if available
+  device: "cuda"
   targets:
     # State-only shifts (gradient-optimized opponents)
     - shift_kind: "state_only"
-      target_divergence: 0.05
-      tolerance: 0.02
+      target_divergence: 5.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_only"
-      target_divergence: 0.10
-      tolerance: 0.02
+      target_divergence: 10.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_only"
-      target_divergence: 0.15
-      tolerance: 0.02
+      target_divergence: 15.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_only"
-      target_divergence: 0.20
-      tolerance: 0.02
+      target_divergence: 20.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     
     # State+action shifts (gradient-optimized opponents)
     - shift_kind: "state_action"
-      target_divergence: 0.05
-      tolerance: 0.02
+      target_divergence: 5.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_action"
-      target_divergence: 0.10
-      tolerance: 0.02
+      target_divergence: 10.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_action"
-      target_divergence: 0.15
-      tolerance: 0.02
+      target_divergence: 15.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     - shift_kind: "state_action"
-      target_divergence: 0.20
-      tolerance: 0.02
+      target_divergence: 20.0
+      tolerance: 2.0
       max_iters: 80
-      lr: 0.01
+      lr: 0.1
     
-    # Policy shifts (now with gradient-based optimization for opponent movement)
+    # Policy shifts (with gradient-based optimization for opponent movement)
     - shift_kind: "policy"
       target_divergence: 0.05
       tolerance: 0.02
@@ -153,7 +153,7 @@ gradient_optimization:
       max_iters: 80
       lr: 0.01
 
-# Policy shifts (direct configuration - legacy approach)
+# Policy shifts (direct configuration)
 policy_shift_configs:
   # Policy shifts by changing mixture weights (kept for backward compatibility)
   policy_050:

@@ -148,7 +148,10 @@ def main():
     ap.add_argument("--device", type=str, default="cuda")
     ap.add_argument("--save_dir", type=str, default=None)
     ap.add_argument("--deterministic_latent", action="store_true", help="Use posterior mean during training (disables sampling)")
-    # CVAE is constrained to a single global latent z by default
+    ap.add_argument("--global_latent", dest="global_latent", action="store_true", default=True,
+                    help="Use a single global latent vector shared across the dataset (default)")
+    ap.add_argument("--no_global_latent", dest="global_latent", action="store_false",
+                    help="Disable the global latent and infer per-sample z values")
     args = ap.parse_args()
 
     train_index = os.path.join(args.data_root, "train", "index.json")
@@ -163,7 +166,7 @@ def main():
     Tteams = ds_train[0]["state"].shape[1]
     Aagents = ds_train[0]["state"].shape[2]
 
-    model = CVAE(teams=Tteams, agents=Aagents, window=W, hidden=args.hidden, latent=args.latent, global_z=True).to(args.device)
+    model = CVAE(teams=Tteams, agents=Aagents, window=W, hidden=args.hidden, latent=args.latent, global_z=args.global_latent).to(args.device)
     opt = torch.optim.Adam(model.parameters(), lr=args.lr)
 
     train_loader = DataLoader(ds_train, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=collate)
@@ -219,5 +222,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
