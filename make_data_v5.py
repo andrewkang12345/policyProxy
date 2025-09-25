@@ -15,6 +15,7 @@ import json
 import numpy as np
 from pathlib import Path
 from typing import Dict, List, Any
+from copy import deepcopy
 import torch
 
 # Import the original data generation functionality
@@ -73,7 +74,7 @@ def load_baseline_data(baseline_path: str) -> Dict[str, np.ndarray]:
 
 
 def generate_gradient_optimized_split(config, split_name: str, num_episodes: int, 
-                                    optimized_opponent: torch.nn.Module, save_path: str):
+                                    optimized_opponent: torch.nn.Module, out_dir: str):
     """Generate a split using gradient-optimized opponent."""
     
     print(f"📊 Generating {split_name} with optimized opponent ({num_episodes} episodes)")
@@ -83,29 +84,32 @@ def generate_gradient_optimized_split(config, split_name: str, num_episodes: int
     # into the generation pipeline by modifying the opponent policies
     
     # Generate the split using existing infrastructure
-    generate_split(save_path, config, split_name, num_episodes, seed_offset=hash(split_name) % 10000)
+    generate_split(out_dir, config, split_name, num_episodes, seed_offset=hash(split_name) % 10000)
+    split_dir = os.path.join(out_dir, split_name)
     
-    print(f"✅ Generated {split_name} at {save_path}")
+    print(f"✅ Generated {split_name} at {split_dir}")
 
 
-def generate_policy_shift_split(config: Dict, split_name: str, num_episodes: int, 
-                               policy_config: Dict, save_path: str):
+def generate_policy_shift_split(config, split_name: str, num_episodes: int, 
+                               policy_config: Dict, out_dir: str):
     """Generate a split with policy distribution shift."""
     
     print(f"📊 Generating {split_name} with policy shift ({num_episodes} episodes)")
     
     # Create config with modified policy mixture
-    temp_config = config.copy()
-    temp_config["generator"] = temp_config["generator"].copy()
-    
+    temp_config = deepcopy(config)
+
     # Apply policy shift configuration
     if "mixture" in policy_config:
-        temp_config["generator"]["mixture"] = policy_config["mixture"]
+        base_mixture = dict(temp_config.mixture) if temp_config.mixture else {}
+        base_mixture.update(policy_config["mixture"])
+        temp_config.mixture = base_mixture
     
     # Generate the split
-    generate_split(save_path, temp_config, split_name, num_episodes, seed_offset=hash(split_name) % 10000)
+    generate_split(out_dir, temp_config, split_name, num_episodes, seed_offset=hash(split_name) % 10000)
+    split_dir = os.path.join(out_dir, split_name)
     
-    print(f"✅ Generated policy shift {split_name} at {save_path}")
+    print(f"✅ Generated policy shift {split_name} at {split_dir}")
 
 
 def compute_achieved_divergences(baseline_path: str, shift_path: str, shift_kind: str) -> Dict[str, float]:
@@ -257,7 +261,7 @@ def main():
                 split_name=split_name,
                 num_episodes=30,  # Smaller for shifted splits
                 optimized_opponent=result["opponent_model"],
-                save_path=split_path
+                out_dir=args.out
             )
             
             # Compute achieved divergences
@@ -286,7 +290,7 @@ def main():
             split_name=split_name,
             num_episodes=30,
             policy_config=policy_config,
-            save_path=split_path
+            out_dir=args.out
         )
         
         # Compute policy divergences

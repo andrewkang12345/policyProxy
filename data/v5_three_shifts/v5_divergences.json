@@ -1,0 +1,56 @@
+{
+  "v5_divergences": {
+    "ood_state_only_050": {
+      "ws_state": 1.0963211997101705
+    },
+    "ood_state_only_100": {
+      "ws_state": 1.5767502781748772
+    },
+    "ood_state_only_150": {
+      "ws_state": 1.214732265646259
+    },
+    "ood_state_only_200": {
+      "ws_state": 0.9193711013595263
+    },
+    "ood_state_action_050": {
+      "ws_state": 0.8399762807786465,
+      "ws_action": 0.052380827359641745,
+      "ws_combined": 0.44617855406914414
+    },
+    "ood_state_action_100": {
+      "ws_state": 1.2555299795170627,
+      "ws_action": 0.06739115358417622,
+      "ws_combined": 0.6614605665506195
+    },
+    "ood_state_action_150": {
+      "ws_state": 1.7682170844078064,
+      "ws_action": 0.10778718384011882,
+      "ws_combined": 0.9380021341239626
+    },
+    "ood_state_action_200": {
+      "ws_state": 1.124687623580297,
+      "ws_action": 0.10164684652118011,
+      "ws_combined": 0.6131672350507386
+    },
+    "ood_policy_050": {
+      "js_policy": 0.005059389928987545
+    },
+    "ood_policy_100": {
+      "js_policy": 0.005059389928987545
+    },
+    "ood_policy_150": {
+      "js_policy": 0.005059389928987545
+    },
+    "ood_policy_200": {
+      "js_policy": 0.005059389928987545
+    }
+  },
+  "methodology": {
+    "state_action_shifts": "gradient_optimized_opponents",
+    "policy_shifts": "direct_configuration",
+    "metrics": {
+      "state_action": "wasserstein_distance",
+      "policy": "jensen_shannon_divergence"
+    }
+  }
+}

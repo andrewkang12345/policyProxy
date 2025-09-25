@@ -54,6 +54,20 @@ class PerformanceAnalyzer:
             'changepoint_detection': 'f1_tau3'
         }
         
+    def _resolve_json_file(self, path: Path) -> Path | None:
+        if not path.exists():
+            return None
+        if path.is_file():
+            return path
+        if path.is_dir():
+            same_name = path / path.name
+            if same_name.exists() and same_name.is_file():
+                return same_name
+            for candidate in sorted(path.glob("*.json")):
+                if candidate.is_file():
+                    return candidate
+        return None
+
     def load_baseline_results(self) -> Dict[str, Dict]:
         """Load evaluation results for all baselines."""
         results = {}
@@ -72,21 +86,21 @@ class PerformanceAnalyzer:
                 baseline_results = {}
                 
                 # Load training results
-                results_file = baseline_dir / "results.json"
-                if results_file.exists():
+                results_file = self._resolve_json_file(baseline_dir / "results.json")
+                if results_file:
                     with open(results_file, 'r') as f:
                         baseline_results['training'] = json.load(f)
                 
                 # Load rollout results  
-                rollout_file = baseline_dir / "rollout_all.json"
-                if rollout_file.exists():
+                rollout_file = self._resolve_json_file(baseline_dir / "rollout_all.json")
+                if rollout_file:
                     with open(rollout_file, 'r') as f:
                         rollout_data = json.load(f)
                         baseline_results['rollout'] = self._aggregate_rollout_metrics(rollout_data)
                 
                 # Load diagnostics
-                diag_file = baseline_dir / "diagnostics.json"
-                if diag_file.exists():
+                diag_file = self._resolve_json_file(baseline_dir / "diagnostics.json")
+                if diag_file:
                     with open(diag_file, 'r') as f:
                         baseline_results['diagnostics'] = json.load(f)
                 

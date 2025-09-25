@@ -85,6 +85,21 @@ class DetailedPerformanceAnalyzer:
             }
         }
         
+    def _resolve_json_file(self, path: Path) -> Path | None:
+        """Ensure legacy checkpoints wrapped in directories still load as files."""
+        if not path.exists():
+            return None
+        if path.is_file():
+            return path
+        if path.is_dir():
+            same_name = path / path.name
+            if same_name.exists() and same_name.is_file():
+                return same_name
+            for candidate in sorted(path.glob("*.json")):
+                if candidate.is_file():
+                    return candidate
+        return None
+
     def load_baseline_performance(self) -> Dict[str, Dict]:
         """Load baseline (IID) performance from actual evaluation results."""
         baseline_perf = {}
@@ -97,8 +112,8 @@ class DetailedPerformanceAnalyzer:
             perf = {}
             
             # Load training results for ADE
-            results_file = baseline_dir / "results.json"
-            if results_file.exists():
+            results_file = self._resolve_json_file(baseline_dir / "results.json")
+            if results_file:
                 with open(results_file, 'r') as f:
                     data = json.load(f)
                     if 'test' in data:
@@ -106,8 +121,8 @@ class DetailedPerformanceAnalyzer:
                         perf['FDE'] = data['test'].get('FDE', 0.0)
             
             # Load rollout results for collision rate and smoothness
-            rollout_file = baseline_dir / "rollout_all.json"
-            if rollout_file.exists():
+            rollout_file = self._resolve_json_file(baseline_dir / "rollout_all.json")
+            if rollout_file:
                 with open(rollout_file, 'r') as f:
                     rollout_data = json.load(f)
                     if 'per_episode' in rollout_data:
@@ -123,8 +138,8 @@ class DetailedPerformanceAnalyzer:
                             perf['smoothness'] = np.mean(smoothness_vals)
             
             # Load diagnostics for representation metrics
-            diag_file = baseline_dir / "diagnostics.json"
-            if diag_file.exists():
+            diag_file = self._resolve_json_file(baseline_dir / "diagnostics.json")
+            if diag_file:
                 with open(diag_file, 'r') as f:
                     diag_data = json.load(f)
                     perf['probe_accuracy'] = diag_data.get('probe_acc_test', 0.5)

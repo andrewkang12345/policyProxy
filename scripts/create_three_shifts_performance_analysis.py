@@ -37,11 +37,25 @@ class ThreeShiftsAnalyzer:
         self.baselines = ['cvae_pid', 'cvae_repr', 'gru', 'trans_cvae', 'cvae_reg']
         self.tasks = {
             'Action Prediction': 'ADE',
-            'Collision Avoidance': 'collision_rate',
+            'Collision Avoidance': 'collision_rate', 
             'Trajectory Smoothness': 'smoothness', 
             'Representation Quality': 'probe_accuracy',
             'Policy Clustering': 'cluster_purity'
         }
+    
+    def _resolve_json_file(self, path: Path) -> Path | None:
+        if not path.exists():
+            return None
+        if path.is_file():
+            return path
+        if path.is_dir():
+            same_name = path / path.name
+            if same_name.exists() and same_name.is_file():
+                return same_name
+            for candidate in sorted(path.glob("*.json")):
+                if candidate.is_file():
+                    return candidate
+        return None
     
     def load_shift_data(self) -> Dict[str, Dict]:
         """Load data for the three gradient-optimized shifts."""
@@ -77,14 +91,14 @@ class ThreeShiftsAnalyzer:
                 result = {}
                 
                 # Load training results
-                train_file = baseline_dir / "results.json"
-                if train_file.exists():
+                train_file = self._resolve_json_file(baseline_dir / "results.json")
+                if train_file:
                     with open(train_file, 'r') as f:
                         result['training'] = json.load(f)
                 
                 # Load rollout results
-                rollout_file = baseline_dir / "rollout_all.json"
-                if rollout_file.exists():
+                rollout_file = self._resolve_json_file(baseline_dir / "rollout_all.json")
+                if rollout_file:
                     with open(rollout_file, 'r') as f:
                         rollout_data = json.load(f)
                         if 'per_episode' in rollout_data:
@@ -98,8 +112,8 @@ class ThreeShiftsAnalyzer:
                             result['rollout'] = agg
                 
                 # Load diagnostics
-                diag_file = baseline_dir / "diagnostics.json"
-                if diag_file.exists():
+                diag_file = self._resolve_json_file(baseline_dir / "diagnostics.json")
+                if diag_file:
                     with open(diag_file, 'r') as f:
                         result['diagnostics'] = json.load(f)
                 

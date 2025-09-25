@@ -29,6 +29,11 @@ def unit(v: np.ndarray) -> np.ndarray:
 
 from generator.opponent_policies import OpponentPolicyManager, OpponentPolicyConfig
 
+try:
+    from baselines.state_cond.train_cvae_transformer import TransCVAE  # type: ignore
+except Exception:  # pragma: no cover - optional dependency during rollout
+    TransCVAE = None
+
 
 class GRUModel(nn.Module):
     def __init__(self, teams: int, agents: int, hidden: int = 128):
@@ -126,6 +131,31 @@ class RolloutModelWrapper:
             self.model.eval()
             self.is_cvae = True
             self.requires_policy_id = True
+            return
+
+        # Transformer CVAE checkpoints use transformer encoder blocks in both encoder/decoder.
+        if TransCVAE and any(k.startswith("enc.enc.layers") for k in state_dict.keys()):
+            if latent_dim is None:
+                to_mu = state_dict.get("enc.to_mu.weight")
+                latent_dim = int(to_mu.shape[0]) if to_mu is not None else 16
+            hidden_dim = state_dict.get("enc.proj.weight")
+            hidden_dim = int(hidden_dim.shape[0]) if hidden_dim is not None else 128
+            layer_ids = {int(k.split(".")[3]) for k in state_dict.keys() if k.startswith("enc.enc.layers")}
+            num_layers = max(layer_ids) + 1 if layer_ids else 2
+            model = TransCVAE(
+                teams=teams,
+                agents=agents,
+                window=window,
+                hidden=hidden_dim,
+                latent=latent_dim,
+                nhead=8,
+                layers=num_layers,
+            )
+            model.load_state_dict(state_dict, strict=False)
+            self.model = model.to(device)
+            self.model.eval()
+            self.is_cvae = True
+            self.latent_dim = latent_dim
             return
 
         if CVAE and latent_dim is not None:
@@ -384,6 +414,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
